@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+
 import "./SideBar.css";
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
@@ -13,7 +14,21 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PersonIcon from "@material-ui/icons/Person";
 import PhoneIcon from "@material-ui/icons/Phone";
 import DuoIcon from "@material-ui/icons/Duo";
+
+import List from "@mui/material/List";
+
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import StarBorder from "@material-ui/icons/StarBorder";
+
 function SideBar() {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
   return (
     <div className="sidebar">
       <div className="sideBar__top">
@@ -59,12 +74,39 @@ function SideBar() {
           <p>Drafts</p>
           <span>54</span>
         </div>
-        <div className="item">
+        <div onClick={handleClick} className="item">
           <ExpandMoreIcon />
 
           <p>More</p>
           <span>54</span>
         </div>
+
+        <Collapse
+          in={open}
+          timeout="auto"
+          unmountOnExit
+          style={{ display: "flex", marginLeft: "13px", marginBottom: "13px" }}
+        >
+          <List
+            style={{ display: "flex", flexDirection: "column" }}
+            component="div"
+            disablePadding
+          >
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Starred" />
+            </ListItemButton>
+
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="DraftsIcon" />
+            </ListItemButton>
+          </List>
+        </Collapse>
         <div className="sideBar__bottom">
           <PersonIcon className="PhoneIcon" />
           <PhoneIcon className="PhoneIcon" />

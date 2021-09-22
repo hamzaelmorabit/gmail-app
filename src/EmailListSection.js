@@ -5,15 +5,15 @@ export default function EmailListSection({ color, Icon, selected, title }) {
   return (
     <div
       style={{
-        color: selected ? color : "black",
-        borderBottom:  `2px solid ${color}` 
+        color: selected ? color : "#818181",
+        borderBottom: `2px solid ${color}`,
       }}
       className={`email-list-section ${selected && "selected__section"}`}
     >
       {/* <IconButton> */}
-        <Icon />
+      <Icon />
       {/* </IconButton> */}
-{/*  */}
+      {/*  */}
       <h4>{title}</h4>
     </div>
   );

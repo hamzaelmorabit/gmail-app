@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,6 +7,7 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
+import DraftsIcon from "@material-ui/icons/Drafts";
 import {
   ArrowDropDownCircleOutlined,
   ChevronLeftOutlined,
@@ -14,14 +15,21 @@ import {
   KeyboardHideOutlined,
   SettingsSharp,
   RedoSharp,
+  PeopleOutline,
+  LocalOfferOutlined,
   MoreVertOutlined,
 } from "@material-ui/icons";
 import { Checkbox, IconButton } from "@material-ui/core";
 import "./EmailList.css";
 import EmailListSection from "./EmailListSection";
+import EmailListRows from "./EmailListRows";
+import {useHistory} from "react-router-dom"
 export default function EmailList() {
+  const [selectedRow, setSelectedRow] = useState(true);
+const history = useHistory()
+
   return (
-    <div className="emailList">
+    <div className="emailList" onClick={() => history.push("./mail")}>
       <div className="emailList__settings">
         <div className="emailList-rightSide">
           <Checkbox />
@@ -52,22 +60,44 @@ export default function EmailList() {
       </div>
       <div className="emailList__sections">
         <EmailListSection
-          Icon={SettingsSharp}
+          Icon={DraftsIcon}
           selected={true}
           title={"Primary"}
           color={"red"}
         />
         <EmailListSection
-          Icon={SettingsSharp}
+          Icon={PeopleOutline}
           selected={false}
           title={"Promotions"}
           color={"blue"}
         />
         <EmailListSection
-          Icon={SettingsSharp}
+          Icon={LocalOfferOutlined}
           selected={false}
           color={"green"}
           title={"Social"}
+        />
+      </div>
+      <div className="emailList__rows">
+        <EmailListRows
+          selectedRow={selectedRow}
+          title={"title"}
+          description={"description"}
+          time={"time"}
+          subject={"subject"}
+          id={"id"}
+        />
+        <EmailListRows
+          selectedRow={selectedRow}
+          title={"title"}
+          description={
+            "subjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+          }
+          time={"time"}
+          subject={
+            "zzz"
+          }
+          id={"id"}
         />
       </div>
     </div>
