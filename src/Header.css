@@ -1,0 +1,61 @@
+header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid whitesmoke;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+.header__left {
+    align-items: center;
+    display: flex;
+}
+
+.header__left img {
+    height: 50px;
+    object-fit: contain;
+}
+
+.header__middle {
+    display: flex;
+    border-radius: 6px;
+    background: whitesmoke;
+    flex: 0.7;
+    padding: 10px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.header__middle .icons {
+    cursor: pointer;
+}
+
+.header__middle input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 4px 12px;
+    width: 100%;
+}
+
+input::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+.header__right .WindowIcon {
+    color: red
+}
+
+.header__right {
+    padding-right: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+    align-items: center;
+}
+
+.header__right img {
+    height: 40px;
+    border-radius: 50%
+}
