@@ -5,7 +5,6 @@ import SideBar from "./components/SideBar.js";
 import Email from "./components/Email.js";
 import EmailList from "./components//EmailList.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Counter } from "./features/counter/Counter.js";
 import SendEmail from "./components/SendEmail.js";
 import { selectEmail } from "./features/emailSlice";
 import { selectLogin, login } from "./features/loginSlice";
