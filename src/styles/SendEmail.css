@@ -1,0 +1,74 @@
+.SendEmail {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 40%;
+    /* height: 80%; */
+    border-radius: 5px;
+    position: absolute;
+    z-index: 999;
+    bottom: 0px;
+    right: 2px;
+    max-width: 500px;
+}
+
+.SendEmail_header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    align-items: center;
+    padding: 8px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.SendEmail_main form {
+    display: flex;
+    flex-direction: column;
+}
+
+.SendEmail_main input, .SendEmail_main textarea {
+    border: none;
+    outline: none;
+    margin: 4px auto;
+    width: 95%;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.021);
+    padding-top: 6px;
+    /* border-radius: 5px; */
+}
+
+.SendEmail_main form>div {
+    margin: 0px !important;
+}
+
+.SendEmail_main input[type="submit"] {
+    width: 114px;
+    background-color: rgb(25, 159, 221);
+    color: white;
+    padding: 6px 12px;
+    /* margin-top: 28px; */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.footer_send {
+    margin: 0px !important;
+    padding: 4px 0px;
+    display: flex;
+    background-color: #333 !important;
+    align-items: center !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.error {
+    color: red;
+    text-align: right;
+    padding-top: 0.2px;
+    margin-right: 6px;
+    font-size:14px;
+    font-weight: bold;
+}

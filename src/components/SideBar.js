@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "./SideBar.css";
+import "./../styles/SideBar.css";
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import InboxIcon from "@material-ui/icons/Inbox";
@@ -22,10 +22,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@material-ui/icons/StarBorder";
-
+import { useSelector, useDispatch } from "react-redux";
+import { openSendEmail } from "./../features/emailSlice";
 function SideBar() {
-  const [open, setOpen] = React.useState(true);
-
+  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
   const handleClick = () => {
     setOpen(!open);
   };
@@ -34,7 +35,11 @@ function SideBar() {
       <div className="sideBar__top">
         {/* <IconButton> */}
         {/* <AddIcon /> */}
-        <Button startIcon={<AddIcon />} className="buttonBase">
+        <Button
+          startIcon={<AddIcon />}
+          onClick={() => dispatch(openSendEmail())}
+          className="buttonBase"
+        >
           Compose
         </Button>
         {/* </IconButton> */}

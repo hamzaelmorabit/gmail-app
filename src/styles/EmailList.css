@@ -1,0 +1,70 @@
+.emailList {
+    /* display: flex; */
+    flex: 1;
+    /* background-color: rgba(255, 255, 255, 0.555); */
+    background-color: whitesmoke;
+    /* background-color: #f2f2f2; */
+    /* min-height: 100vh; */
+    /* overflow: scroll; */
+    /* flex-direction: column; */
+    overflow: scroll !important;
+    /* position: relative; */
+    /* background-color: red; */
+    ;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.emailList__settings {
+    background-color: white;
+    ;
+    display: flex;
+    /* flex: 1; */
+    justify-content: space-between;
+    align-content: space-between;
+    /* background-color: red; */
+    position: sticky;
+    z-index: 999;
+    top: 0;
+}
+
+.emailList__sections {
+    display: flex;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    background-color: white;
+    ;
+}
+
+.email-list-section {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    min-width: 200px;
+    border-bottom-width: 0px !important;
+}
+
+.email-list-section>h4 {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.selected__section, .email-list-section:hover {
+    background-color: rgba(233, 230, 230, 0.884);
+    border-bottom-width: 3px !important;
+    opacity: 1 !important;
+    /* background-color: rgba(242, 245, 245, 0.8); */
+}
+
+/* .icon:hover{
+    color: black !important;
+} */
+
+/* .selected__section:hover{
+    background-color: whitesmoke;
+    border-bottom-width: 3px !important;
+} */
