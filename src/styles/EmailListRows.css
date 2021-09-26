@@ -1,6 +1,8 @@
 .emailRow {
     display: flex;
     /* padding: 1px; */
+    padding-top: 1px;
+    flex-direction: row;
     align-items: center;
     /* border-bottom: 1px solid #f5f5f5; */
     /* background-color: rgba(255, 255, 255, 0.555); */
@@ -11,20 +13,25 @@
     /* flex:1; */
 }
 
-/* .emailList__rows:visited {
-    background-color: red;
+.emailRow:active {
+    background-color: rgb(218, 214, 214);
 }
 
+.emailRow:visited {
+    background-color:red
+}
+
+/* 
 .emailList__rows {
     background-color: blue;
 } */
 
 .emailRow:hover {
-    /* box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75); */
+    /* box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75);  */
     /* box-shadow: 0 5px 5px rgba(182, 182, 182, 0.2); */
     box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
-    border-bottom-width: 0px
-    /* flex:1; */
+    /* border-bottom-width: 0px; */
+    flex: 1;
 }
 
 .emailList__sections {
@@ -86,4 +93,10 @@
     text-overflow: ellipsis;
     /* color: red; */
     /* width:129px; */
+}
+
+.emailListRows__message__title {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
 }

@@ -36,7 +36,41 @@
     z-index: 999;
     top: 0;
     background-color: white;
-    ;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 10px;
+}
+
+.container p {
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 180px;
+    align-items: center;
+    /* flex: 0.2; */
+    /* margin-left: 10px; */
+}
+
+.email-list-section .new {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.email-list-section .new div {
+    display: flex;
+    align-items: center;
+    padding: 0.5px 8px;
+    /* background-color: blue; */
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
 }
 
 .email-list-section {

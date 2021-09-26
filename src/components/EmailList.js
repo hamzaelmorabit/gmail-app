@@ -24,6 +24,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectMail } from "./../features/emailSlice";
 
 export default function EmailList() {
+  const [selectedPrimary, setSelectedPrimary] = useState(true);
+  const [selectedPromotions, setSelectedPromotions] = useState(false);
+  const [selectedSocial, setSelectedSocial] = useState(false);
   const [selectedRow, setSelectedRow] = useState(false);
   // const [realtimePosts, error, loading] = useCollection(
   // db.collection("emails").orderBy("timesTamp", "desc")
@@ -83,24 +86,49 @@ export default function EmailList() {
         </div>
       </div>
       <div className="emailList__sections">
-        <EmailListSection
-          Icon={DraftsIcon}
-          selected={true}
-          title={"Primary"}
-          color={"red"}
-        />
-        <EmailListSection
-          Icon={PeopleOutline}
-          selected={false}
-          title={"Promotions"}
-          color={"blue"}
-        />
-        <EmailListSection
-          Icon={LocalOfferOutlined}
-          selected={false}
-          color={"green"}
-          title={"Social"}
-        />
+        <div
+          onClick={() => {
+            setSelectedPromotions(false);
+            setSelectedSocial(false);
+
+            setSelectedPrimary(true);
+          }}
+        >
+          <EmailListSection
+            Icon={DraftsIcon}
+            selected={selectedPrimary}
+            title={"Primary"}
+            color={"red"}
+          />
+        </div>
+        <div
+          onClick={() => {
+            setSelectedPrimary(false);
+            setSelectedSocial(false);
+            setSelectedPromotions(true);
+          }}
+        >
+          <EmailListSection
+            Icon={PeopleOutline}
+            selected={selectedPromotions}
+            title={"Promotions"}
+            color={"blue"}
+          />
+        </div>
+        <div
+          onClick={() => {
+            setSelectedPrimary(false);
+            setSelectedPromotions(false);
+            setSelectedSocial(true);
+          }}
+        >
+          <EmailListSection
+            Icon={LocalOfferOutlined}
+            selected={selectedSocial}
+            color={"green"}
+            title={"Social"}
+          />
+        </div>
       </div>
       <div
         className="emailList__rows"
@@ -111,107 +139,52 @@ export default function EmailList() {
             <li>{post.data().subject}</li>
           ))}
         </ul> */}
-        {sendEmails.map(({ id, data: { to, message, timesTamp, subject } }) => (
+        {selectedPrimary ? (
+          sendEmails.map(
+            ({ id, data: { to, message, timesTamp, subject } }) => (
+              <EmailListRows
+                key={id}
+                selectedRow={true}
+                title={to}
+                description={message}
+                time={new Date(timesTamp?.toDate()).toLocaleString()}
+                subject={subject}
+                // id={id}
+              />
+            )
+          )
+        ) : selectedPromotions ? (
+          <>
+            <EmailListRows
+              key={"ix"}
+              selectedRow={true}
+              title={"to"}
+              description={"message"}
+              time={new Date().toLocaleString()}
+              subject={"subject"}
+              // id={id}
+            />
+            <EmailListRows
+              key={"id"}
+              selectedRow={true}
+              title={"to"}
+              description={"message"}
+              time={new Date().toLocaleString()}
+              subject={"subject"}
+              // id={id}
+            />
+          </>
+        ) : (
           <EmailListRows
-            key={id}
+            key={"id"}
             selectedRow={true}
-            title={to}
-            description={message}
-            time={new Date(timesTamp?.toDate()).toLocaleString()}
-            subject={subject}
+            title={"to"}
+            description={"message"}
+            time={new Date().toLocaleString()}
+            subject={"subject"}
             // id={id}
           />
-        ))}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
-        <EmailListRows
-          selectedRow={selectedRow}
-          title={"s"}
-          description={
-            "qssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectssssssssssssssssssssssssssssssssssssssssssssssssssssssssssubjectsssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-          }
-          time={"new Date()"}
-          subject={"zzz"}
-          id={222}
-        />{" "}
+        )}
       </div>
     </div>
   );

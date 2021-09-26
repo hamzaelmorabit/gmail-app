@@ -18,14 +18,28 @@ export default function EmailListRows({
   selectedRow,
 }) {
   const selectedMail = useSelector(selectEmail2);
+
   const dispatch = useDispatch();
   const history = useHistory();
+  const [hover, setHover] = useState(false);
+
+  const formatAmPm = (dataString) => {
+    if (dataString) {
+      const hours = parseInt(dataString.split(":")[0]);
+      return hours % 12 !== 0 ? dataString + " PM" : dataString + " AM";
+    }
+  };
 
   const [selectedRow_, setselectedRow_] = useState(false);
   console.log(selectedMail);
   return (
     <div
-      className="emailRow"
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
       onClick={() => {
         dispatch(
           selectMail({
@@ -37,8 +51,14 @@ export default function EmailListRows({
         );
         history.push("./mail");
       }}
+      className="emailRow"
     >
-      <div className="emailListRows__options">
+      <div
+        style={{
+          opacity: hover ? 1 : 0.5,
+        }}
+        className="emailListRows__options"
+      >
         <Checkbox
           style={{ width: "30px" }}
           // onChange={() => setselectedRow_(selectedRow)}
@@ -52,13 +72,50 @@ export default function EmailListRows({
         </IconButton>
       </div>
       <h5 className="emailListRows__title">{title}</h5>
-      <div className="emailListRows__message">
-        <h4>
-          {subject} {" -"}
-          <span className="emailListRows__description">{description}</span>
-        </h4>
+      <div className="emailListRows__message__title">
+        <div className="emailListRows__message">
+          <h4>
+            {subject} {" -"}
+            <span className="emailListRows__description">{description}</span>
+          </h4>
+        </div>
+
+        <p
+          style={{
+            flex: 0.19,
+
+            display: !hover ? "inline" : "none",
+          }}
+          className="emailListRows__time"
+        >
+          {formatAmPm(time.split(",")[1]?.slice(0, 6))}
+        </p>
+
+        <div
+          // id="hide"
+
+          style={{
+            display: hover ? "inline" : "none",
+            marginRight: "-40px",
+            // backgroundColor: "red",
+            // width: "222px",
+            flex: 0.3,
+          }}
+        >
+          <IconButton style={{ width: "45px" }}>
+            <StarBorder style={{ width: "20px" }} />
+          </IconButton>
+          <IconButton style={{ width: "45px" }}>
+            <LabelImportantIcon style={{ width: "20px" }} />
+          </IconButton>
+          <IconButton style={{ width: "45px" }}>
+            <StarBorder style={{ width: "20px" }} />
+          </IconButton>
+          <IconButton style={{ width: "45px" }}>
+            <LabelImportantIcon style={{ width: "20px" }} />
+          </IconButton>
+        </div>
       </div>
-      <p className="emailListRows__time"> {time}</p>
     </div>
   );
 }
