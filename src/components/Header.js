@@ -11,6 +11,7 @@ import firebase from "firebase";
 import "./../styles/Header.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, selectLogin } from "./../features/loginSlice";
+import { togleSideBarEmail } from "./../features/emailSlice";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -31,9 +32,11 @@ export default function Header() {
   return (
     <header>
       <div className="header__left">
-        <IconButton>
-          <MenuIcon />
-        </IconButton>
+        <div onClick={() => dispatch(togleSideBarEmail())}>
+          <IconButton>
+            <MenuIcon />
+          </IconButton>
+        </div>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrAQiLzdfHSBUaZxqa7s8xL5GZUDJHs1TIrB-kheH1eS1H6JASdqD_hnPCC6bv89PmGZQ&usqp=CAU"
           alt=""

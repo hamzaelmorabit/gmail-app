@@ -23,77 +23,156 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@material-ui/icons/StarBorder";
 import { useSelector, useDispatch } from "react-redux";
-import { openSendEmail } from "./../features/emailSlice";
+import { openSendEmail, selectSideBarEmail } from "./../features/emailSlice";
 function SideBar() {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
+  const sideBarOpen_ = useSelector(selectSideBarEmail);
   const handleClick = () => {
     setOpen(!open);
   };
   return (
-    <div className="sidebar">
-      <div className="sideBar__top">
-        {/* <IconButton> */}
-        {/* <AddIcon /> */}
+    <div className="sidebar" style={{ flex: sideBarOpen_ ? 0.08 : 0.3 }}>
+      {/* <IconButton> */}
+      {/* <AddIcon /> */}
+      {sideBarOpen_ ? (
         <Button
-          startIcon={<AddIcon />}
+          style={{
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "32px",
+            backgroundImage:
+              "url(https://www.gstatic.com/images/icons/material/colored_icons/2x/create_32dp.png)",
+            padding: "30px",
+            backgroundColor: "whitesmoke",
+            borderRadius: "50%",
+            margin: "0 auto",
+          }}
           onClick={() => dispatch(openSendEmail())}
-          className="buttonBase"
-        >
-          Compose
-        </Button>
-        {/* </IconButton> */}
-      </div>
+        ></Button>
+      ) : (
+        <div className="sideBar__top">
+          <Button
+            startIcon={<AddIcon />}
+            onClick={() => dispatch(openSendEmail())}
+            className="buttonBase"
+          >
+            {"Compose"}
+          </Button>{" "}
+        </div>
+      )}
+      {/* </IconButton> */}
+
       <div className="sideBar__middle">
-        <div className="item">
+        <div
+          className="item"
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+        >
           <InboxIcon />
-          <p>inbox</p>
-          <span>54</span>
+          <div
+            style={{
+              display: !sideBarOpen_ ? "inline" : "none",
+            }}
+          >
+            <p>inbox</p>
+            <span>54</span>
+          </div>
         </div>
-        <div className="item">
+        <div
+          className="item"
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+        >
           <StarIcon />
-
-          <p>Starred</p>
-          <span>54</span>
+          <div style={{ display: !sideBarOpen_ ? "" : "none" }}>
+            <p>Starred</p>
+            <span>54</span>
+          </div>
         </div>
-        <div className="item">
+        <div
+          className="item"
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+        >
           <AccessTimeIcon />
-
-          <p>Snoozed</p>
-          <span>54</span>
+          <div style={{ display: !sideBarOpen_ ? "" : "none" }}>
+            <p>Snoozed</p>
+            <span>54</span>
+          </div>
         </div>
-        <div className="item">
+        <div
+          className="item"
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+        >
           <LabelImportantIcon />
-
-          <p>Important</p>
-          <span>54</span>
+          <div style={{ display: !sideBarOpen_ ? "" : "none" }}>
+            <p>Important</p>
+            <span>54</span>
+          </div>
         </div>
-        <div className="item">
+        <div
+          className="item"
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+        >
           <SendIcon />
-          <p>Sent</p>
-          <span>54</span>
+
+          <div style={{ display: !sideBarOpen_ ? "" : "none" }}>
+            <p>Sent</p>
+            <span>54</span>
+          </div>
         </div>
-        <div className="item">
+        <div
+          className="item"
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+        >
           <DraftsIcon />
-
-          <p>Drafts</p>
-          <span>54</span>
+          <div style={{ display: !sideBarOpen_ ? "" : "none" }}>
+            <p>Drafts</p>
+            <span>54</span>
+          </div>
         </div>
-        <div onClick={handleClick} className="item">
+        <div
+          style={{
+            justifyContent: sideBarOpen_ ? "center" : "",
+          }}
+          onClick={handleClick}
+          className="item"
+        >
           <ExpandMoreIcon />
-
-          <p>More</p>
-          <span>54</span>
+          <div style={{ display: !sideBarOpen_ ? "" : "none" }}>
+            <p>More</p>
+            <span>54</span>
+          </div>
         </div>
 
         <Collapse
           in={open}
           timeout="auto"
           unmountOnExit
-          style={{ display: "flex", marginLeft: "13px", marginBottom: "13px" }}
+          style={{
+            display: "flex",
+            margin: !sideBarOpen_ ? "13px 13px" : "5px -10px",
+            paddingLeft: !sideBarOpen_ ? "13px" : "30px",
+          }}
         >
           <List
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{
+              justifyContent: sideBarOpen_ ? "center" : "",
+              alignContent: sideBarOpen_ ? "center" : "",
+              display: "flex",
+              flexDirection: "column",
+              // width: sideBarOpen_ ? "82px" : "110px",
+            }}
             component="div"
             disablePadding
           >
@@ -101,18 +180,26 @@ function SideBar() {
               <ListItemIcon>
                 <StarBorder />
               </ListItemIcon>
-              <ListItemText primary="Starred" />
+              {!sideBarOpen_ && <ListItemText primary="Starred" />}
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 4 }}>
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
-              <ListItemText primary="DraftsIcon" />
+              {!sideBarOpen_ && <ListItemText primary="DraftsIcon" />}
             </ListItemButton>
           </List>
         </Collapse>
-        <div className="sideBar__bottom">
+        <div
+          className="sideBar__bottom"
+          style={{
+            width: sideBarOpen_ ? "22px" : "110px",
+
+            // flex: 1,
+            flexDirection: sideBarOpen_ ? "column" : "row",
+          }}
+        >
           <PersonIcon className="PhoneIcon" />
           <PhoneIcon className="PhoneIcon" />
           <DuoIcon className="DuoIcon" />

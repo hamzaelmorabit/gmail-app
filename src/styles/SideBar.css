@@ -3,7 +3,7 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    flex: 0.3;
+    /* flex: 0.08; */
     max-width: 300px;
     /* position: sticky;
     top: 120px;
@@ -52,7 +52,7 @@
 }
 
 .item:hover>span {
-    display: inline;
+    display: flex !important;
 }
 
 .item:first-child {
