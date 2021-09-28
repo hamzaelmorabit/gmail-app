@@ -9,7 +9,7 @@ export const emailSlice = createSlice({
   initialState: {
     sendMessageIsOpen: false,
     selectedMail: {},
-    sideBarOpen: true,
+    sideBarOpen: false,
   },
   reducers: {
     selectMail: (state, action) => {

@@ -22,7 +22,11 @@ import { useHistory } from "react-router-dom";
 import { db } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMail } from "./../features/emailSlice";
+import usePagination from "./pagination/Pagination";
+import Stack from "@mui/material/Stack";
+import TablePagination from "@mui/material/TablePagination";
 
+import { Pagination } from "@material-ui/lab";
 export default function EmailList() {
   const [selectedPrimary, setSelectedPrimary] = useState(true);
   const [selectedPromotions, setSelectedPromotions] = useState(false);
@@ -37,7 +41,7 @@ export default function EmailList() {
 
   // console.log(loading, "loading");
   useEffect(() => {
-    // console.log("doc.data", realtimePosts);
+    console.log("useEffect.data");
 
     db.collection("emails")
       .orderBy("timesTamp", "desc")
@@ -49,11 +53,50 @@ export default function EmailList() {
           }))
         )
       );
-    console.log(sendEmails);
+    console.log(sendEmails, "sendEmails");
+
     // realtimePosts?.docs.map((post) => console.log(post.data().timesTamp));
   }, []);
 
   const history = useHistory();
+  const [page, setPage] = useState(0);
+
+
+
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+    if (newPage === 0) {
+      setBegin(0);
+      setEnd(rowsPerPage);
+    } else {
+
+      setBegin(newPage * rowsPerPage);
+      if (newPage * rowsPerPage + rowsPerPage - 1 > sendEmails.length)
+        setEnd(sendEmails.length);
+      else setEnd(newPage * rowsPerPage + rowsPerPage);
+    }
+
+  };
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const [begin, setBegin] = useState(0);
+  const [end, setEnd] = useState(rowsPerPage);
+  const maxPage = Math.ceil(sendEmails.length / rowsPerPage);
+  // const handleChangeRowsPerPage = (event) => {
+  //   console.log("handleChangeRowsPerPage");
+  //   console.log(event.target.value);
+  //   setRowsPerPage(parseInt(event.target.value));
+  //   setPage(0)
+  //   setBegin(0);
+  //   if (parseInt(event.target.value) < sendEmails.length)
+  //     setEnd(parseInt(event.target.value));
+  //   else
+  //      setEnd(sendEmails.length);
+  // };
+
+  console.log(begin);
+  console.log(end);
 
   return (
     <div className="emailList">
@@ -70,13 +113,34 @@ export default function EmailList() {
             <MoreVertOutlined />
           </IconButton>
         </div>
+
         <div className="emailList-leftSide">
-          <IconButton>
+          <div>
+            <TablePagination
+              component="div"
+              count={maxPage * rowsPerPage}
+              page={page}
+              labelRowsPerPage=""
+              onPageChange={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              rowsPerPageOptions={[]}
+              className={{
+                caption: "caption",
+                toolbar: "toolbar",
+                selectRoot: "selectRoot",
+              }}
+              // classes={"MuiSlider-root"}
+              // className={"MuiSlider-root"}
+              // onRowsPerPageChange={handleChangeRowsPerPage}
+              // rowsPerPageOptions={[5, 10, 15,100]}
+            />
+          </div>
+          {/* <IconButton>
             <ChevronLeftOutlined />
           </IconButton>
           <IconButton>
             <ChevronRightOutlined />
-          </IconButton>
+          </IconButton> */}
           <IconButton>
             <KeyboardHideOutlined />
           </IconButton>
@@ -140,8 +204,9 @@ export default function EmailList() {
           ))}
         </ul> */}
         {selectedPrimary ? (
-          sendEmails.map(
-            ({ id, data: { to, message, timesTamp, subject } }) => (
+          sendEmails
+            .slice(begin, end)
+            .map(({ id, data: { to, message, timesTamp, subject } }) => (
               <EmailListRows
                 key={id}
                 selectedRow={true}
@@ -151,8 +216,7 @@ export default function EmailList() {
                 subject={subject}
                 // id={id}
               />
-            )
-          )
+            ))
         ) : selectedPromotions ? (
           <>
             <EmailListRows

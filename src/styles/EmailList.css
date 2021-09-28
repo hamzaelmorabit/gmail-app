@@ -13,6 +13,10 @@
     ;
 }
 
+.pagination {
+    color: "#fff"
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -28,6 +32,23 @@
     position: sticky;
     z-index: 999;
     top: 0;
+}
+
+/* .MuiSlider-root:hover {
+    /* color: #2e8b57; 
+    padding:4px;
+} */
+
+.caption {
+    /* color: red; */
+    /* background-color: red; */
+    /* background-color: transparent !important; */
+    /* width:122px */
+}
+
+.emailList-leftSide {
+    /* background-color:red; */
+    display: flex
 }
 
 .emailList__sections {
