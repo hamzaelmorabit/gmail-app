@@ -21,10 +21,10 @@ export const emailSlice = createSlice({
     closeSendEmail: (state) => {
       state.sendMessageIsOpen = false;
     },
-    togleSideBarEmail: (state) => {
-      state.sideBarOpen = !state.sideBarOpen;
+    togleSideBarEmail: (state, action) => {
+      if (action.payload) state.sideBarOpen = action.payload;
+      else state.sideBarOpen = !state.sideBarOpen;
     },
-   
   },
 });
 

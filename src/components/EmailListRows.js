@@ -92,14 +92,12 @@ export default function EmailListRows({
         </p>
 
         <div
-          // id="hide"
-
+          id="emailListRows__right_settings"
           style={{
             display: hover ? "inline" : "none",
-            marginRight: "-40px",
-            // backgroundColor: "red",
-            // width: "222px",
-            flex: 0.3,
+            //   marginRight: "-40px",
+
+            //   flex: 0.3,
           }}
         >
           <IconButton style={{ width: "45px" }}>

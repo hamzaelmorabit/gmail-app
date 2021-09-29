@@ -18,7 +18,7 @@
 }
 
 .emailRow:visited {
-    background-color:red
+    background-color: red
 }
 
 /* 
@@ -100,3 +100,18 @@
     flex: 1;
     justify-content: space-between;
 }
+
+@media(max-width:938px) {
+    #emailListRows__right_settings {
+        width: 180px !important;
+        display: flex;
+        flex-direction:row;
+    
+      
+    }
+    
+}
+
+/* .iconsSettingsRows {
+    width: "2px"
+} */

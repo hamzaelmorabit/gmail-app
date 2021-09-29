@@ -23,31 +23,16 @@
 
 .emailList__settings {
     background-color: white;
-    ;
     display: flex;
-    /* flex: 1; */
     justify-content: space-between;
     align-content: space-between;
-    /* background-color: red; */
     position: sticky;
     z-index: 999;
     top: 0;
 }
 
-/* .MuiSlider-root:hover {
-    /* color: #2e8b57; 
-    padding:4px;
-} */
-
-.caption {
-    /* color: red; */
-    /* background-color: red; */
-    /* background-color: transparent !important; */
-    /* width:122px */
-}
 
 .emailList-leftSide {
-    /* background-color:red; */
     display: flex
 }
 
@@ -73,8 +58,7 @@
     overflow: hidden;
     width: 180px;
     align-items: center;
-    /* flex: 0.2; */
-    /* margin-left: 10px; */
+  
 }
 
 .email-list-section .new {
@@ -88,7 +72,6 @@
     display: flex;
     align-items: center;
     padding: 0.5px 8px;
-    /* background-color: blue; */
     border-radius: 5px;
     color: white;
     font-weight: bold;
@@ -114,12 +97,3 @@
     opacity: 1 !important;
     /* background-color: rgba(242, 245, 245, 0.8); */
 }
-
-/* .icon:hover{
-    color: black !important;
-} */
-
-/* .selected__section:hover{
-    background-color: whitesmoke;
-    border-bottom-width: 3px !important;
-} */

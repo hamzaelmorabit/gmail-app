@@ -13,7 +13,7 @@
     /* padding-right: 20px; */
 }
 
-.sideBar__top {
+.sideBar__top__close {
     /* padding: 2px 8px; */
     /* background: whitesmoke; */
     display: flex;
@@ -23,8 +23,18 @@
     box-sizing: content-box;
     width: 130px;
     margin: 3px 15px;
+    padding: 12px 18px;
+    border-radius: 50px;
     /* box-shadow: 0px 5px 5px rgb(202, 202, 202); */
     box-shadow: 0px 2px 5px -2px rgb(0, 0, 0, 0.75);
+}
+
+.close {
+    display: none;
+}
+
+.open {
+    display: inline
 }
 
 .sideBar__top .buttonBase {
@@ -39,6 +49,18 @@
     padding: 12px;
     /* width: 230px; */
     color: #818181;
+}
+
+.sideBar__middle__open>.item {
+    justify-content: center
+}
+
+.sideBar__middle__open>.item div {
+    display: none;
+}
+
+.item div {
+    display: inline;
 }
 
 .item {
@@ -86,6 +108,41 @@
     display: flex;
     align-self: center;
     justify-content: space-evenly;
-    width: 110px;
     cursor: pointer;
+    width: 110px;
+    flex-direction: row,
+}
+
+.sideBar__middle__open .sideBar__bottom {
+    width: 22px;
+    flex-direction: column
+}
+
+@media(max-width:938px) {
+    .sideBar__bottom {
+        width: 22px !important;
+        flex-direction: column !important;
+        /* background-color: rgb(86, 7, 175) !important; */
+    }
+    .item {
+        justify-content: center !important;
+    }
+    .item div {
+        display: none !important;
+    }
+    .sidebar {
+        max-width: 65px
+        /* width: 2px */
+        /* background-color: rgb(86, 7, 175) !important; */
+    }
+    .close {
+        display: inline-flex;
+    }
+    .buttonBase {
+        display: none !important;
+    }
+    .div1 .ListItemText {
+        display: none;
+        /* background-color: red */
+    }
 }
