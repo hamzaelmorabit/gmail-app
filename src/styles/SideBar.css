@@ -118,7 +118,7 @@
     flex-direction: column
 }
 
-@media(max-width:938px) {
+@media(max-width:769px) {
     .sideBar__bottom {
         width: 22px !important;
         flex-direction: column !important;

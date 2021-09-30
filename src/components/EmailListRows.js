@@ -82,7 +82,8 @@ export default function EmailListRows({
 
         <p
           style={{
-            flex: 0.19,
+            // flex: 0.2,
+            paddingRight: "52px",
 
             display: !hover ? "inline" : "none",
           }}
@@ -100,6 +101,7 @@ export default function EmailListRows({
             //   flex: 0.3,
           }}
         >
+          
           <IconButton style={{ width: "45px" }}>
             <StarBorder style={{ width: "20px" }} />
           </IconButton>

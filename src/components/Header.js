@@ -58,7 +58,7 @@ export default function Header() {
 
       <div className="header__right">
         <IconButton>
-          <Apps  />
+          <Apps />
         </IconButton>
 
         <IconButton>

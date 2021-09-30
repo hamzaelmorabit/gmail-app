@@ -101,16 +101,41 @@
     justify-content: space-between;
 }
 
-@media(max-width:938px) {
+@media(max-width:769px) {
     #emailListRows__right_settings {
         width: 180px !important;
         display: flex;
-        flex-direction:row;
-    
-      
+        flex-direction: row;
     }
-    
 }
+
+@media(max-width:769px) {
+    .emailListRows__time {
+        color: red;
+    }
+}
+
+@media (max-width: 480px) {
+    .emailListRows__options {
+        /* width:122px; */
+        /* color: red; */
+        flex: 0.2
+    }
+    .emailRow {
+        font-size: 12px;
+    }
+    .emailRow .emailListRows__message {
+        /* flex: 0.1 */
+        font-size: 12px;
+    }
+    .emailListRows__time {
+        white-space: nowrap;
+        font-size: 10px;
+        padding-right: 52px;
+    }
+}
+
+/* @media (max-width: 480px) {} */
 
 /* .iconsSettingsRows {
     width: "2px"

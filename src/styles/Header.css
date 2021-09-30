@@ -67,3 +67,38 @@ input::placeholder {
     height: 40px;
     border-radius: 50%
 }
+
+@media (max-width: 480px) {
+    header {
+        /* max-width: 1000px; */
+        display: grid;
+        grid-auto-flow: column;
+        grid-column-gap: 2px;
+        /* width: 222px;
+        height: 222px; */
+        /* margin-left: auto;
+        margin-right: auto; */
+    }
+    .header__middle {
+        display:flex;
+        flex: 0.02;
+        padding: 2px;
+        font-size: 12px;
+        margin: 1px 1px;
+    }
+    .header__middle .icons, .header__left img {
+        display: none
+    }
+    .header__right {
+        display: grid;
+        grid-auto-flow: column;
+        grid-column-gap: 1px;
+        padding-right: 2px;
+        height: 40px;
+        font-size: 12px;
+    }
+    .header__right img {
+        height: 30px;
+        border-radius: 50%
+    }
+}
