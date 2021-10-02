@@ -18,13 +18,13 @@ function App() {
   const user = useSelector(selectLogin);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user)
+    auth.onAuthStateChanged((user_) => {
+      if (user_)
         dispatch(
           login({
-            email: user.email,
-            name: user.displayName,
-            photoURL: user.photoURL,
+            email: user_.email,
+            name: user_.displayName,
+            photoURL: user_.photoURL,
           })
         );
     });

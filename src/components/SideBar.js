@@ -52,7 +52,12 @@ function SideBar() {
   //   });
 
   return (
-    <div className="sidebar" style={{ flex: sideBarOpen_ ? 0.08 : 0.3 }}>
+    <div
+      className="sidebar"
+      style={{
+        flex: sideBarOpen_ ? "" : 0.3,
+      }}
+    >
       {/* <IconButton> */}
       {/* <AddIcon /> */}
       {/* {sideBarOpen_ ? ( */}

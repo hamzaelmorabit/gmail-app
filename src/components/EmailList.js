@@ -39,6 +39,18 @@ export default function EmailList() {
 
   const [sendEmails, setSendEmails] = useState([]);
 
+  const [show, setShow] = useState(false);
+
+  const transitionScroll = () => {
+    if (window.scrollY > 10) setShow(true);
+    else setShow(false);
+    console.log("scroll");
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", transitionScroll);
+    return () => window.removeEventListener("scroll", transitionScroll);
+  }, []);
+
   // console.log(loading, "loading");
   useEffect(() => {
     console.log("useEffect.data");
@@ -61,46 +73,31 @@ export default function EmailList() {
   const history = useHistory();
   const [page, setPage] = useState(0);
 
-
-
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
     if (newPage === 0) {
       setBegin(0);
       setEnd(rowsPerPage);
     } else {
-
       setBegin(newPage * rowsPerPage);
       if (newPage * rowsPerPage + rowsPerPage - 1 > sendEmails.length)
         setEnd(sendEmails.length);
       else setEnd(newPage * rowsPerPage + rowsPerPage);
     }
-
   };
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const [begin, setBegin] = useState(0);
   const [end, setEnd] = useState(rowsPerPage);
   const maxPage = Math.ceil(sendEmails.length / rowsPerPage);
-  // const handleChangeRowsPerPage = (event) => {
-  //   console.log("handleChangeRowsPerPage");
-  //   console.log(event.target.value);
-  //   setRowsPerPage(parseInt(event.target.value));
-  //   setPage(0)
-  //   setBegin(0);
-  //   if (parseInt(event.target.value) < sendEmails.length)
-  //     setEnd(parseInt(event.target.value));
-  //   else
-  //      setEnd(sendEmails.length);
-  // };
+
 
   console.log(begin);
   console.log(end);
 
   return (
     <div className="emailList">
-      <div className="emailList__settings">
+      <div id={`${show && "navShow"}`} className="emailList__settings">
         <div className="emailList-rightSide">
           <Checkbox />
           <IconButton>
@@ -115,7 +112,7 @@ export default function EmailList() {
         </div>
 
         <div className="emailList-leftSide">
-          <div>
+          <div className="TablePagination">
             <TablePagination
               component="div"
               count={maxPage * rowsPerPage}
@@ -135,20 +132,38 @@ export default function EmailList() {
               // rowsPerPageOptions={[5, 10, 15,100]}
             />
           </div>
-          {/* <IconButton>
-            <ChevronLeftOutlined />
-          </IconButton>
-          <IconButton>
-            <ChevronRightOutlined />
-          </IconButton> */}
-          <IconButton>
-            <KeyboardHideOutlined />
-          </IconButton>
-          <IconButton>
-            <SettingsSharp />
-          </IconButton>
+          <div className="icons__right__section">
+            <IconButton>
+              <KeyboardHideOutlined />
+            </IconButton>
+            <IconButton>
+              <SettingsSharp />
+            </IconButton>
+          </div>
         </div>
       </div>
+
+      <div className="TablePaginationSmallScreen">
+        <TablePagination
+          component="div"
+          count={maxPage * rowsPerPage}
+          page={page}
+          labelRowsPerPage=""
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[]}
+          className={{
+            caption: "caption",
+            toolbar: "toolbar",
+            selectRoot: "selectRoot",
+          }}
+          // classes={"MuiSlider-root"}
+          // className={"MuiSlider-root"}
+          // onRowsPerPageChange={handleChangeRowsPerPage}
+          // rowsPerPageOptions={[5, 10, 15,100]}
+        />
+      </div>
+
       <div className="emailList__sections">
         <div
           onClick={() => {

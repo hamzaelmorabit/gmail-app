@@ -111,11 +111,17 @@
 
 @media(max-width:769px) {
     .emailListRows__time {
-        color: red;
+        /* color: rgba(44, 191, 218, 0.932); */
     }
 }
 
 @media (max-width: 480px) {
+    .emailListRows__time {
+        /* white-space: nowrap;
+        padding-right: 52px;*/
+        font-size: 10px;
+        color: blueviolet
+    }
     .emailListRows__options {
         /* width:122px; */
         /* color: red; */
@@ -127,11 +133,6 @@
     .emailRow .emailListRows__message {
         /* flex: 0.1 */
         font-size: 12px;
-    }
-    .emailListRows__time {
-        white-space: nowrap;
-        font-size: 10px;
-        padding-right: 52px;
     }
 }
 
