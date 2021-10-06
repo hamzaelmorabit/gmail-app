@@ -41,9 +41,7 @@
     /* flex: 1 */
 }
 
-
-
- .emailList__settings {
+.emailList__settings {
     /* background-color:red; */
     display: flex;
     position: sticky;
@@ -113,14 +111,28 @@
 }
 
 @media (max-width: 480px) {
-    .emailList__sections {
-        display: flex;
-        flex-direction: column;
+    /* .emailList-rightSide {
+        background-color: rgb(0, 255, 76);
+        min-width: 100px;
     }
+    .emailList-rightSide .items__icons {
+        background-color: red;
+        font-size: 22px;
+    }
+    .items__icons__checkbox {
+        font-size: 22px;
+        background-color: red;
+    }
+    .icons__right__section .items__icons {
+        background-color: blue;
+        font-size: 22px;
+    } */
     .emailList__sections {
         /* background-color: red; */
         /* max-width: 00px;*/
         /* max-height: 200px; */
+        display: flex;
+        flex-direction: column;
         padding: 0px;
         margin: 0px;
     }
@@ -137,6 +149,6 @@
     }
     .emailList__settings {
         font-size: 13px;
-        padding:2px;
+        padding: 2px;
     }
 }

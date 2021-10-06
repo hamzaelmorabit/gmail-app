@@ -22,6 +22,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@material-ui/icons/StarBorder";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
   openSendEmail,
@@ -63,6 +64,7 @@ function SideBar() {
       {/* {sideBarOpen_ ? ( */}
       <div className={sideBarOpen_ ? "" : "close"}>
         <Button
+          // className="img_button_"
           style={{
             // display:sideBarOpen_ ? "" : "none",
             backgroundPosition: "center",
@@ -101,6 +103,16 @@ function SideBar() {
             : "sideBar__middle"
         }
       >
+        <div
+          onClick={() => dispatch(openSendEmail())}
+          className="item img_button_"
+        >
+          <AddIcon />
+          {/* <div>
+            <p>inbox</p>
+            <span>54</span>
+          </div> */}
+        </div>
         <div className="item">
           <InboxIcon />
           <div>
@@ -151,7 +163,6 @@ function SideBar() {
             <span>54</span>
           </div>
         </div>
-
         <Collapse
           in={open}
           timeout="auto"

@@ -91,23 +91,24 @@ export default function EmailList() {
   const [end, setEnd] = useState(rowsPerPage);
   const maxPage = Math.ceil(sendEmails.length / rowsPerPage);
 
-
   console.log(begin);
   console.log(end);
 
   return (
     <div className="emailList">
+  
+   
       <div id={`${show && "navShow"}`} className="emailList__settings">
         <div className="emailList-rightSide">
-          <Checkbox />
+          <Checkbox className="items__icons__checkbox" />
           <IconButton>
-            <ArrowDropDownCircleOutlined />
+            <ArrowDropDownCircleOutlined className="items__icons" />
           </IconButton>
           <IconButton>
-            <RedoSharp />
+            <RedoSharp className="items__icons" />
           </IconButton>
           <IconButton>
-            <MoreVertOutlined />
+            <MoreVertOutlined className="items__icons" />
           </IconButton>
         </div>
 
@@ -134,10 +135,10 @@ export default function EmailList() {
           </div>
           <div className="icons__right__section">
             <IconButton>
-              <KeyboardHideOutlined />
+              <KeyboardHideOutlined className="items__icons" />
             </IconButton>
             <IconButton>
-              <SettingsSharp />
+              <SettingsSharp className="items__icons" />
             </IconButton>
           </div>
         </div>

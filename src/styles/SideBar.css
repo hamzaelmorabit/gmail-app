@@ -79,7 +79,7 @@
     display: flex !important;
 }
 
-.item:first-child {
+.item:nth-child(2) {
     color: red;
     background-color: rgba(212, 117, 117, 0.308);
     border-radius: 13px;
@@ -139,8 +139,8 @@
         display: none !important;
     }
     .sidebar {
-        max-width: 65px;
-        display: inline-flex 
+        max-width: 60px;
+        display: inline-flex
         /* display: inline-flex */
         /* width: 2px */
         /* background-color: rgb(86, 7, 175) !important; */
@@ -154,5 +154,48 @@
     .div1 .ListItemText {
         display: none;
         /* background-color: red */
+    }
+}
+
+.item:first-child {
+    /* background-color: red; */
+    display: none;
+    opacity: 0;
+}
+
+@media (max-width:320px) {
+    .close {
+        display: none
+    }
+    .item:first-child
+    /* background-color: red; */
+        {
+        /* font-size:42px; */
+        /* min-width: 322px; */
+        /* padding: 22px; */
+        opacity: 1;
+        flex: 1;
+        /* background-color: white; */
+        /* color: white; */
+        display: inline-flex;
+        /* background-color: rgb(81, 17, 134); */
+    }
+    /* .item:first-child>span {
+        color: white;
+        background-color: white;
+        border-radius: 13px;
+        font-weight: bold;
+        cursor: pointer;
+    } */
+    .item:nth-child(2) {
+        color: red;
+        /* background-color: rgba(212, 117, 117, 0.308); */
+        border-radius: 13px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .sidebar {
+        max-width: 34px;
+        /* background-color: red; */
     }
 }
